@@ -1,0 +1,21 @@
+{
+  "item.mineconomy.money_coin_one": "One",
+  "item.mineconomy.money_coin_two": "Two",
+  "item.mineconomy.money_banknote_five": "Five",
+  "item.mineconomy.money_banknote_ten": "Ten",
+  "item.mineconomy.money_banknote_twenty": "Twenty",
+  "item.mineconomy.money_banknote_fifty": "Fifty",
+  "item.mineconomy.money_banknote_one_hundred": "One Hundred",
+  "item.mineconomy.bank_check": "Bank Check",
+  "item.mineconomy.bank_checkbook": "Bank Checkbook",
+  "item.mineconomy.wallet": "Wallet",
+  "item.mineconomy.credit_card": "Credit Card",
+  "item.mineconomy.vending_machine": "Vending Machine",
+  "block.mineconomy.vending_machine": "Vending Machine",
+  "gui.mineconomy.bank_check_title": "Bank Check (%s)",
+  "gui.mineconomy.bank_check_to": "To",
+  "gui.mineconomy.bank_check_from": "From",
+  "gui.mineconomy.bank_check_amount": "Amount",
+  "gui.mineconomy.bank_check_validate": "Validate",
+  "itemGroup.mineconomy.tab_mineconomy": "Mineconomy"
+}

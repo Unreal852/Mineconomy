@@ -1,0 +1,20 @@
+{
+  "item.mineconomy.money_coin_one": "Un",
+  "item.mineconomy.money_coin_two": "Deux",
+  "item.mineconomy.money_banknote_five": "Cinq",
+  "item.mineconomy.money_banknote_ten": "Dix",
+  "item.mineconomy.money_banknote_twenty": "Vingt",
+  "item.mineconomy.money_banknote_fifty": "Fifty",
+  "item.mineconomy.money_banknote_one_hundred": "Cent",
+  "item.mineconomy.bank_check": "Chèque Bancaire",
+  "item.mineconomy.wallet": "Portefeuille",
+  "item.mineconomy.credit_card": "Carte Bancaire",
+  "item.mineconomy.vending_machine": "Distributeur Automatique",
+  "block.mineconomy.vending_machine": "Distributeur Automatique",
+  "gui.mineconomy.bank_check_title": "Chèque Bancaire (%s)",
+  "gui.mineconomy.bank_check_to": "A",
+  "gui.mineconomy.bank_check_from": "De",
+  "gui.mineconomy.bank_check_amount": "Montant",
+  "gui.mineconomy.bank_check_validate": "Valider",
+  "itemGroup.mineconomy.tab_mineconomy": "Mineconomy"
+}

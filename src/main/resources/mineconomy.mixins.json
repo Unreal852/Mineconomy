@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "fr.unreal852.mineconomy.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "client": [
+    "ExampleMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
