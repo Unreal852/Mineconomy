@@ -1,7 +1,6 @@
 package fr.unreal852.mineconomy.common.items;
 
-import fr.unreal852.mineconomy.ModConstants;
-import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
+import fr.unreal852.mineconomy.common.ModConstants;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

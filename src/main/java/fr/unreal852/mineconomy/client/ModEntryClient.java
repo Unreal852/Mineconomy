@@ -1,16 +1,12 @@
 package fr.unreal852.mineconomy.client;
 
-import fr.unreal852.mineconomy.ModConstants;
-import fr.unreal852.mineconomy.ModLogger;
-import fr.unreal852.mineconomy.client.gui.BankCheckGUI;
+import fr.unreal852.mineconomy.common.ModLogger;
 import fr.unreal852.mineconomy.common.ModEntryCommon;
-import fr.unreal852.mineconomy.common.proxy.IModProxy;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.screen.ScreenProviderRegistry;
-import net.minecraft.item.ItemStack;
-import net.minecraft.text.LiteralText;
-import spinnery.client.BaseScreen;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
+@Environment(EnvType.CLIENT)
 public class ModEntryClient implements ClientModInitializer
 {
     @Override

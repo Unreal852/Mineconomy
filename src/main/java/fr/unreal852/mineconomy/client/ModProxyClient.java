@@ -1,6 +1,7 @@
 package fr.unreal852.mineconomy.client;
 
-import fr.unreal852.mineconomy.ModLogger;
+import fr.unreal852.mineconomy.client.gui.BankManagementGUI;
+import fr.unreal852.mineconomy.common.ModLogger;
 import fr.unreal852.mineconomy.client.gui.BankCheckGUI;
 import fr.unreal852.mineconomy.common.proxy.IModProxy;
 import net.fabricmc.api.EnvType;
@@ -20,5 +21,11 @@ public class ModProxyClient implements IModProxy
     public void openCheckGUI(ItemStack stack)
     {
         MinecraftClient.getInstance().openScreen(new BankCheckGUI(stack));
+    }
+
+    @Override
+    public void openBankManagementGUI()
+    {
+        MinecraftClient.getInstance().openScreen(new BankManagementGUI());
     }
 }

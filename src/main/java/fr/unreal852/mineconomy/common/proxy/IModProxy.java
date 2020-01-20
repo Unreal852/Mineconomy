@@ -4,5 +4,13 @@ import net.minecraft.item.ItemStack;
 
 public interface IModProxy
 {
-    void openCheckGUI(ItemStack stack);
+    default void openCheckGUI(ItemStack stack)
+    {
+
+    }
+
+    default void openBankManagementGUI()
+    {
+
+    }
 }

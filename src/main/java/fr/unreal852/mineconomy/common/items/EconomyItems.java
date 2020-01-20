@@ -1,8 +1,8 @@
 package fr.unreal852.mineconomy.common.items;
 
-import fr.unreal852.mineconomy.ModConstants;
-import fr.unreal852.mineconomy.ModLogger;
-import fr.unreal852.mineconomy.ModUtils;
+import fr.unreal852.mineconomy.common.ModConstants;
+import fr.unreal852.mineconomy.common.ModLogger;
+import fr.unreal852.mineconomy.common.ModUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;

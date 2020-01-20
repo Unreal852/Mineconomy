@@ -1,8 +1,8 @@
 package fr.unreal852.mineconomy.common.blocks;
 
-import fr.unreal852.mineconomy.ModConstants;
-import fr.unreal852.mineconomy.ModLogger;
-import fr.unreal852.mineconomy.ModUtils;
+import fr.unreal852.mineconomy.common.ModConstants;
+import fr.unreal852.mineconomy.common.ModLogger;
+import fr.unreal852.mineconomy.common.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
@@ -14,7 +14,8 @@ public enum EconomyBlocks
 {
     VENDING_MACHINE(new Block(Block.Settings.copy(Blocks.BEDROCK)), ModUtils.getIdentifier("vending_machine"), true),
     CASH_MACHINE(null, ModUtils.getIdentifier("cash_machine"), true),
-    BANK_ACCOUNT_VIEWER(null, ModUtils.getIdentifier("bank_account_viewer"), true);
+    CREDIT_CARD_PAYMENT_MACHINE(null, ModUtils.getIdentifier("credit_card_payment_machine"), true),
+    BANK_MANAGEMENT(new BlockBankManagement(), ModUtils.getIdentifier("bank_management"), true);
 
     private Block      m_Block;
     private Identifier m_Identifier;

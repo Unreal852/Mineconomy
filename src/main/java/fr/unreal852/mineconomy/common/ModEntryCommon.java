@@ -1,6 +1,5 @@
 package fr.unreal852.mineconomy.common;
 
-import fr.unreal852.mineconomy.ModLogger;
 import fr.unreal852.mineconomy.common.blocks.EconomyBlocks;
 import fr.unreal852.mineconomy.common.items.EconomyItems;
 import fr.unreal852.mineconomy.common.proxy.IModProxy;
@@ -18,7 +17,7 @@ public class ModEntryCommon implements ModInitializer
         ModLogger.LogInfo("Initializing Common...");
         EconomyItems.RegisterItems();
         EconomyBlocks.RegisterBlocks();
-        ServerSidePacketRegistry.INSTANCE.register(EconomyPackets.BANK_CHECK_VALIDATION, ModEntryServer::onReceiveBankCheckValidation);
+        ServerSidePacketRegistry.INSTANCE.register(ModConstants.PACKET_BANK_CHECK_VALIDATION, ModEntryServer::onReceiveBankCheckValidation);
         ModLogger.LogInfo("Initialized Common !");
     }
 }

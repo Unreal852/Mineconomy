@@ -1,4 +1,4 @@
-package fr.unreal852.mineconomy;
+package fr.unreal852.mineconomy.common;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;

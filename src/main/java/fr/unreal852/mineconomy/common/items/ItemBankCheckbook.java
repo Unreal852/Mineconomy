@@ -1,6 +1,6 @@
 package fr.unreal852.mineconomy.common.items;
 
-import fr.unreal852.mineconomy.ModConstants;
+import fr.unreal852.mineconomy.common.ModConstants;
 import fr.unreal852.mineconomy.common.ModEntryCommon;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -13,7 +13,7 @@ public class ItemBankCheckbook extends Item
 {
     public ItemBankCheckbook()
     {
-        super(new Item.Settings().group(ModConstants.MOD_ITEM_GROUP));
+        super(new Item.Settings().group(ModConstants.MOD_ITEM_GROUP).maxCount(32));
     }
 
     @Override
