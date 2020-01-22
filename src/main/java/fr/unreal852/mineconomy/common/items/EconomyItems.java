@@ -20,6 +20,7 @@ public enum EconomyItems
     BANK_CHECK(new ItemBankCheck(), ModUtils.getIdentifier("bank_check")),
     BANK_CHECKBOOK(new ItemBankCheckbook(), ModUtils.getIdentifier("bank_checkbook")),
     WALLET(new ItemWallet(), ModUtils.getIdentifier("wallet")),
+    MY_BANK(new Item(new Item.Settings().group(ModConstants.MOD_ITEM_GROUP)), ModUtils.getIdentifier("my_bank")),
     CREDIT_CARD(new ItemCreditCard(), ModUtils.getIdentifier("credit_card"));
 
     private Item       m_Item;
@@ -45,7 +46,7 @@ public enum EconomyItems
      * Create a new itemstack
      * @return Item Stack
      */
-    public ItemStack getNewItemStack()
+    public ItemStack createItemStack()
     {
         return new ItemStack(getItem());
     }

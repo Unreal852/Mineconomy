@@ -26,6 +26,7 @@ public class ModProxyClient implements IModProxy
     @Override
     public void openBankManagementGUI()
     {
-        MinecraftClient.getInstance().openScreen(new BankManagementGUI());
+        if (MinecraftClient.getInstance().player != null)
+            MinecraftClient.getInstance().openScreen(new BankManagementGUI());
     }
 }

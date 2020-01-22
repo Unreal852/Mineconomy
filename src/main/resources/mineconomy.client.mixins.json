@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "fr.unreal852.mineconomy.mixin",
+  "package": "fr.unreal852.mineconomy.client.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
   ],

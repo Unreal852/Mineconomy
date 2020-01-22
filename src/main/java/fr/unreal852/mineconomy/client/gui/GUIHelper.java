@@ -31,6 +31,11 @@ public final class GUIHelper
         return new WHorizontalSlider(WAnchor.GL_ORIGIN, x, y, 0, width, height, limit, wInterface);
     }
 
+    public static WTabHolder createTabHolder(WInterface wInterface, int x, int y, int width, int height)
+    {
+        return new WTabHolder(WAnchor.GL_ORIGIN, x, y, 0, width, height, wInterface);
+    }
+
     public static int getStringWidth(String value)
     {
         return MinecraftClient.getInstance().textRenderer.getStringWidth(value);
@@ -38,7 +43,7 @@ public final class GUIHelper
 
     public static int getLargestString(String... values)
     {
-        if(values == null || values.length == 0)
+        if (values == null || values.length == 0)
             return 0;
         int last = 0;
         for (String value : values)

@@ -4,13 +4,13 @@
   "version": "${version}",
 
   "name": "Mineconomy",
-  "description": "This plugin add economy to minecraft !",
+  "description": "Adds economy to minecraft !",
   "authors": [
     "Unreal852"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/Unreal852",
+    "sources": "https://github.com/Unreal852/Mineconomy"
   },
 
   "license": "CC0-1.0",
@@ -29,7 +29,9 @@
     ]
   },
   "mixins": [
-    "mineconomy.mixins.json"
+    "mineconomy.client.mixins.json",
+    "mineconomy.common.mixins.json",
+    "mineconomy.server.mixins.json"
   ],
 
   "depends": {

@@ -12,7 +12,7 @@ public class ItemWallet extends Item
 {
     public ItemWallet()
     {
-        super(new Item.Settings().group(ModConstants.MOD_ITEM_GROUP));
+        super(new Item.Settings().group(ModConstants.MOD_ITEM_GROUP).maxCount(1));
     }
 
     @Override

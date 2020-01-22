@@ -1,4 +1,4 @@
-package fr.unreal852.mineconomy.mixin;
+package fr.unreal852.mineconomy.client.mixin;
 
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
