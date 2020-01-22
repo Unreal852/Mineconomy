@@ -1,16 +1,19 @@
 package fr.unreal852.mineconomy.common.items;
 
 import fr.unreal852.mineconomy.common.ModConstants;
-import fr.unreal852.mineconomy.common.ModLogger;
 import fr.unreal852.mineconomy.common.ModUtils;
+
+import fr.unreal852.mineconomy.common.registry.annotations.ModRegistry;
+import fr.unreal852.mineconomy.common.registry.annotations.ModRegistryElement;
+import fr.unreal852.mineconomy.common.registry.registrables.ItemsRegistrable;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
+@ModRegistry(Registrable = ItemsRegistrable.class)
 public enum EconomyItems
 {
-    MONEY_COIN_ONE(new Item( new Item.Settings().group(ModConstants.MOD_ITEM_GROUP)), ModUtils.getIdentifier("money_coin_one")),
+    MONEY_COIN_ONE(new Item(new Item.Settings().group(ModConstants.MOD_ITEM_GROUP)), ModUtils.getIdentifier("money_coin_one")),
     MONEY_COIN_TWO(new Item(new Item.Settings().group(ModConstants.MOD_ITEM_GROUP)), ModUtils.getIdentifier("money_coin_two")),
     MONEY_BANKNOTE_FIVE(new Item(new Item.Settings().group(ModConstants.MOD_ITEM_GROUP)), ModUtils.getIdentifier("money_banknote_five")),
     MONEY_BANKNOTE_TEN(new Item(new Item.Settings().group(ModConstants.MOD_ITEM_GROUP)), ModUtils.getIdentifier("money_banknote_ten")),
@@ -23,7 +26,9 @@ public enum EconomyItems
     MY_BANK(new Item(new Item.Settings().group(ModConstants.MOD_ITEM_GROUP)), ModUtils.getIdentifier("my_bank")),
     CREDIT_CARD(new ItemCreditCard(), ModUtils.getIdentifier("credit_card"));
 
+    @ModRegistryElement(Name = "item")
     private Item       m_Item;
+    @ModRegistryElement(Name = "identifier")
     private Identifier m_Identifier;
 
     EconomyItems(Item item, Identifier identifier)
@@ -44,6 +49,7 @@ public enum EconomyItems
 
     /**
      * Create a new itemstack
+     *
      * @return Item Stack
      */
     public ItemStack createItemStack()
@@ -59,23 +65,5 @@ public enum EconomyItems
     public Identifier getIdentifier()
     {
         return m_Identifier;
-    }
-
-    /**
-     * Register all enumerated items
-     */
-    public static void RegisterItems()
-    {
-        ModLogger.LogInfo("Registering Items...");
-        for(EconomyItems economyItem : values())
-        {
-            if(economyItem.getItem() == null || economyItem.getIdentifier() == null)
-            {
-                ModLogger.LogError("Item '" + economyItem.name() + "' is missing item or identifier. Skipping Registration !");
-                continue;
-            }
-            Registry.register(Registry.ITEM, economyItem.getIdentifier(), economyItem.getItem());
-            ModLogger.LogInfo("Registered Item '" + economyItem.getIdentifier().getPath() + "'");
-        }
     }
 }

@@ -27,8 +27,8 @@ public class BankCheckGUI extends BaseScreen
         getInterfaces().add(wInterface);
         wInterface.center();
 
-        int panelX = (int)wInterface.getPositionX();
-        int panelY = (int)wInterface.getPositionY();
+        int panelX = wInterface.getPositionX();
+        int panelY = wInterface.getPositionY();
         int panelMarginX = 5;
         int panelMarginY = 23;
 
@@ -57,7 +57,7 @@ public class BankCheckGUI extends BaseScreen
 
         int validateWidth = MinecraftClient.getInstance().textRenderer.getStringWidth(validateTextTranslation.asString());
 
-        WButton validateButton = GUIHelper.createButton(wInterface, (panelX + (int) wInterface.getSizeX()) - (validateWidth + widgetMarginX + 5), (int) amountField.getPositionY() + widgetMarginY, validateWidth + 10, 15);
+        WButton validateButton = GUIHelper.createButton(wInterface, (panelX + wInterface.getSizeX()) - (validateWidth + widgetMarginX + 5), amountField.getPositionY() + widgetMarginY, validateWidth + 10, 15);
         validateButton.setOnMouseClicked(() ->
         {
             if (validateButton.getFocus() && stack.getItem() instanceof ItemBankCheckbook)

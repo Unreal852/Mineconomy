@@ -1,19 +1,7 @@
 package fr.unreal852.mineconomy.common.test;
 
-import fr.unreal852.mineconomy.common.ModConstants;
-import fr.unreal852.mineconomy.common.ModLogger;
-import fr.unreal852.mineconomy.common.ModUtils;
-import fr.unreal852.mineconomy.common.items.ItemBankCheck;
-import fr.unreal852.mineconomy.common.items.ItemBankCheckbook;
-import fr.unreal852.mineconomy.common.items.ItemCreditCard;
-import fr.unreal852.mineconomy.common.items.ItemWallet;
-import fr.unreal852.mineconomy.common.networking.bank.BankPacketsHandlers;
-import net.fabricmc.fabric.api.network.PacketConsumer;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.util.Identifier;
-
-public enum ModRegistry
+/*
+public enum ModRegistry implements IModRegistry<ModRegistry>
 {
     ITEM_COIN_ONE("money_coin_one", new Item(new Item.Settings().group(ModConstants.MOD_ITEM_GROUP))),
     ITEM_COIN_TWO("money_coin_two", new Item(new Item.Settings().group(ModConstants.MOD_ITEM_GROUP))),
@@ -27,6 +15,8 @@ public enum ModRegistry
     ITEM_WALLET("wallet", new ItemWallet()),
     ITEM_MY_BANK("my_bank", new Item(new Item.Settings().group(ModConstants.MOD_ITEM_GROUP))),
     ITEM_CREDIT_CARD("credit_card", new ItemCreditCard()),
+    BLOCK_VENDING_MACHINE("vending_machine", new Block(Block.Settings.copy(Blocks.BEDROCK))),
+    BLOCK_CASH_MACHINE("cash_machine", new Block(Block.Settings.copy(Blocks.BEDROCK))),
     PACKET_SERVER_BANK_CHECK_VALIDATION("svrpck_bank_check_validation", BankPacketsHandlers::onReceiveAccountCreation);
 
     public static void registerAll()
@@ -103,4 +93,4 @@ public enum ModRegistry
     {
         return m_block;
     }
-}
+} */
