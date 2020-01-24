@@ -8,6 +8,15 @@ import java.util.EnumSet;
 
 public final class ModRegistry
 {
+    @SafeVarargs
+    public static void registerAll(Class<? extends Enum>... enums)
+    {
+        if (enums == null || enums.length == 0)
+            return;
+        for (Class<? extends Enum> enumClass : enums)
+            register(enumClass);
+    }
+
     public static <E extends Enum<E>> void register(Class<E> enumClass)
     {
         if (enumClass == null)

@@ -1,52 +1,47 @@
 package fr.unreal852.mineconomy.client.gui;
 
-import fr.unreal852.mineconomy.common.items.EconomyItems;
-import net.minecraft.text.LiteralText;
+import fr.unreal852.mineconomy.common.items.ItemsRegistry;
 import net.minecraft.text.TranslatableText;
 import spinnery.client.BaseScreen;
-import spinnery.widget.WAnchor;
 import spinnery.widget.WInterface;
+import spinnery.widget.WSize;
 import spinnery.widget.WTabHolder;
 
 public class BankManagementGUI extends BaseScreen
 {
     private WInterface                 m_mainInterface;
+    private WInterface                 m_titleInterface;
     private WTabHolder                 m_tabHolder;
     private BankAccountCreationTab     m_tabAccountCreation;
     private BankAccountConsultationTab m_tabAccountConsultation;
-    private WTabHolder.WTab            tabA;
-    private WTabHolder.WTab            tabB;
 
     public BankManagementGUI()
     {
         super();
 
-        m_mainInterface = new WInterface(0, 0, 0, 350, 200);
-        m_tabHolder = GUIHelper.createTabHolder(m_mainInterface, 0, 0, m_mainInterface.getSizeX(), m_mainInterface.getSizeY());
-        getInterfaces().add(m_mainInterface);
+        m_mainInterface = new WInterface(GUIHelper.getPosition(0, 0), WSize.of(350, 200));
+        m_titleInterface = new WInterface(GUIHelper.getPosition(0, 0), WSize.of(350, 25));
+        getInterfaces().add(m_titleInterface, m_mainInterface);
+        m_tabHolder = new WTabHolder(GUIHelper.getPosition(0, 0, m_mainInterface), WSize.of(m_mainInterface), m_mainInterface);
+        m_titleInterface.setLabel(new TranslatableText("gui.mineconomy.gui_bank_management_title"));
         m_mainInterface.add(m_tabHolder);
-        initAccountCreationTab();
+        initTabs();
         center();
+        GUIHelper.setTheme("dark", m_mainInterface, m_titleInterface);
+        GUIHelper.setTheme("dark", m_mainInterface.getWidgets());
     }
 
-    private void initAccountCreationTab()
+    private void initTabs()
     {
-        m_tabAccountCreation = new BankAccountCreationTab(m_tabHolder.addTab(EconomyItems.MONEY_BANKNOTE_TEN.getItem(), new TranslatableText("gui.mineconomy.gui_bank_management_sections_account_creation_name")));
+        m_tabAccountCreation = new BankAccountCreationTab(m_tabHolder.addTab(ItemsRegistry.MONEY_BANKNOTE_TEN.getItem(), new TranslatableText("gui.mineconomy.gui_bank_management_account_creation_name")));
+        m_tabAccountConsultation = new BankAccountConsultationTab(m_tabHolder.addTab(ItemsRegistry.MONEY_BANKNOTE_TEN.getItem(), new TranslatableText("gui.mineconomy.gui_bank_management_account_consultation_name")));
     }
 
     private void center()
     {
         m_mainInterface.center();
+        m_titleInterface.setPosition(GUIHelper.getPosition(0, -16, m_mainInterface));
         m_tabHolder.center();
-        /* Temp fix as center does not work actually
-        int tabSize = m_mainInterface.getSizeX() / 3;
-        tabA.getToggle().setPositionX(m_mainInterface.getPositionX());
-        tabA.getToggle().setPositionY(m_mainInterface.getPositionY() - 1);
-
-        tabB.getToggle().setPositionX(m_mainInterface.getPositionX() + tabSize);
-        tabB.getToggle().setPositionY(m_mainInterface.getPositionY() - 1);
-
-        tabC.getToggle().setPositionX(tabB.getToggle().getPositionX() + tabSize);
-        tabC.getToggle().setPositionY(m_mainInterface.getPositionY() - 1); */
+        m_tabAccountCreation.center();
     }
 }

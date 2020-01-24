@@ -9,12 +9,13 @@ import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 
 @ModRegistry(Registrable = BlocksRegistrable.class)
-public enum EconomyBlocks
+public enum BlocksRegistry
 {
-    VENDING_MACHINE(new Block(Block.Settings.copy(Blocks.BEDROCK)), ModUtils.getIdentifier("vending_machine"), true),
-    CASH_MACHINE(null, ModUtils.getIdentifier("cash_machine"), true),
-    CREDIT_CARD_PAYMENT_MACHINE(null, ModUtils.getIdentifier("credit_card_payment_machine"), true),
-    BANK_MANAGEMENT(new BlockBankManagement(), ModUtils.getIdentifier("bank_management"), true);
+    CHECKBOOK_FABRICATOR("checkbook_fabricator", null, true),
+    VENDING_MACHINE("vending_machine", new Block(Block.Settings.copy(Blocks.BEDROCK)), true),
+    CASH_MACHINE("cash_machine", null,true),
+    CREDIT_CARD_PAYMENT_MACHINE("credit_card_payment_machine", null, true),
+    BANK_MANAGEMENT("bank_management", new BlockBankManagement(), true);
 
     @ModRegistryElement(Name = "block")
     private Block      m_Block;
@@ -23,10 +24,10 @@ public enum EconomyBlocks
     @ModRegistryElement(Name = "itemblock")
     private boolean    m_hasItemBlock;
 
-    EconomyBlocks(Block block, Identifier identifier, boolean hasItemBlock)
+    BlocksRegistry(String identifier, Block block, boolean hasItemBlock)
     {
+        m_Identifier = ModUtils.getIdentifier(identifier);
         m_Block = block;
-        m_Identifier = identifier;
         m_hasItemBlock = hasItemBlock;
     }
 

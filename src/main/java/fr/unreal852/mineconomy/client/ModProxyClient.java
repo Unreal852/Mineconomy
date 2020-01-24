@@ -20,7 +20,7 @@ public class ModProxyClient implements IModProxy
     @Override
     public void openCheckGUI(ItemStack stack)
     {
-        MinecraftClient.getInstance().openScreen(new BankCheckGUI(stack));
+        BankCheckGUI.getInstance().open(stack);
     }
 
     @Override

@@ -1,12 +1,11 @@
 package fr.unreal852.mineconomy.common;
 
-import fr.unreal852.mineconomy.common.blocks.EconomyBlocks;
-import fr.unreal852.mineconomy.common.items.EconomyItems;
-import fr.unreal852.mineconomy.common.networking.bank.BankPacketsHandlers;
+import fr.unreal852.mineconomy.common.blocks.BlocksRegistry;
+import fr.unreal852.mineconomy.common.items.ItemsRegistry;
+import fr.unreal852.mineconomy.common.networking.PacketsRegistry;
 import fr.unreal852.mineconomy.common.proxy.IModProxy;
 import fr.unreal852.mineconomy.common.registry.ModRegistry;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
 
 public class ModEntryCommon implements ModInitializer
 {
@@ -17,11 +16,7 @@ public class ModEntryCommon implements ModInitializer
     {
         ModLogger.LogInfo("Initializing Common...");
 
-        ModRegistry.register(EconomyItems.class);
-        ModRegistry.register(EconomyBlocks.class);
-
-        ServerSidePacketRegistry.INSTANCE.register(ModConstants.PACKET_BANK_CHECK_VALIDATION, BankPacketsHandlers::onReceiveBankCheckValidation);
-        ServerSidePacketRegistry.INSTANCE.register(ModConstants.PACKET_BANK_ACCOUNT_CREATION, BankPacketsHandlers::onReceiveAccountCreation);
+        ModRegistry.registerAll(ItemsRegistry.class, BlocksRegistry.class, PacketsRegistry.class);
 
         ModConstants.BANK_ACCOUNTS_FILES_DIRECTORY.mkdirs();
 

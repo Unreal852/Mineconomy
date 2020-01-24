@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
 @ModRegistry(Registrable = ItemsRegistrable.class)
-public enum EconomyItems
+public enum ItemsRegistry
 {
     MONEY_COIN_ONE(new Item(new Item.Settings().group(ModConstants.MOD_ITEM_GROUP)), ModUtils.getIdentifier("money_coin_one")),
     MONEY_COIN_TWO(new Item(new Item.Settings().group(ModConstants.MOD_ITEM_GROUP)), ModUtils.getIdentifier("money_coin_two")),
@@ -31,7 +31,7 @@ public enum EconomyItems
     @ModRegistryElement(Name = "identifier")
     private Identifier m_Identifier;
 
-    EconomyItems(Item item, Identifier identifier)
+    ItemsRegistry(Item item, Identifier identifier)
     {
         m_Item = item;
         m_Identifier = identifier;

@@ -4,36 +4,33 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 import spinnery.widget.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+
 public final class GUIHelper
 {
-    public static WDynamicText createDynamicText(WInterface wInterface, int x, int y, int width, int height)
+    public static void setTheme(String themeName, Collection<WWidget> widgets)
     {
-        return new WDynamicText(WAnchor.GL_ORIGIN, x, y, 0, width, height, wInterface);
+        if(widgets == null || widgets.size() == 0)
+            return;
+        for(WWidget widget : widgets)
+            widget.setTheme(themeName);
     }
 
-    public static WStaticText createStaticText(WInterface wInterface, int x, int y, Text text)
+    public static void setTheme(String themeName, WWidget... widgets)
     {
-        return new WStaticText(WAnchor.GL_ORIGIN, x, y, 0, text, wInterface);
+        setTheme(themeName, Arrays.asList(widgets));
     }
 
-    public static WButton createButton(WInterface wInterface, int x, int y, int width, int height)
+    public static WPosition getPosition(int x, int y, WWidget anchor)
     {
-        return new WButton(WAnchor.GL_ORIGIN, x, y, 0, width, height, wInterface);
+        return WPosition.of(WType.ANCHORED, x, y, 0, anchor);
     }
 
-    public static WToggle createToggle(WInterface wInterface, int x, int y, int width, int height)
+    public static WPosition getPosition(int x, int y)
     {
-        return new WToggle(WAnchor.GL_ORIGIN, x, y, 0, width, height, wInterface);
-    }
-
-    public static WHorizontalSlider createHorizontalSlider(WInterface wInterface, int limit, int x, int y, int width, int height)
-    {
-        return new WHorizontalSlider(WAnchor.GL_ORIGIN, x, y, 0, width, height, limit, wInterface);
-    }
-
-    public static WTabHolder createTabHolder(WInterface wInterface, int x, int y, int width, int height)
-    {
-        return new WTabHolder(WAnchor.GL_ORIGIN, x, y, 0, width, height, wInterface);
+        return WPosition.of(WType.FREE, x, y, 0);
     }
 
     public static int getStringWidth(String value)

@@ -36,7 +36,7 @@ dependencies {
     // PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
     // You may need to force-disable transitiveness on them.
     //modImplementation "io.github.cottonmc:LibGui:1.4.0-beta.1"
-    modImplementation 'com.github.vini2003:Spinnery:48f2c48417'
+    modImplementation 'com.github.vini2003:Spinnery:e9bc8db6db'
 }
 
 processResources {
