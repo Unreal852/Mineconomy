@@ -1,20 +1,23 @@
 package fr.unreal852.mineconomy.client.gui;
 
 import fr.unreal852.mineconomy.common.ModConstants;
-import fr.unreal852.mineconomy.common.items.ItemBankCheck;
-import fr.unreal852.mineconomy.common.items.ItemBankCheckbook;
+import fr.unreal852.mineconomy.common.item.BankCheckItem;
+import fr.unreal852.mineconomy.common.item.BankCheckbookItem;
+import fr.unreal852.mineconomy.common.registry.PacketRegistry;
 import io.netty.buffer.Unpooled;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.PacketByteBuf;
 import spinnery.client.BaseScreen;
 import spinnery.widget.*;
 
+@Environment(EnvType.CLIENT)
 public class BankCheckGUI extends BaseScreen
 {
     private static BankCheckGUI s_instance;
@@ -39,7 +42,7 @@ public class BankCheckGUI extends BaseScreen
         super();
 
         WInterface wInterface = new WInterface(GUIHelper.getPosition(0, 0), WSize.of(250, 100));
-        getInterfaces().add(wInterface);
+        getInterfaceHolder().add(wInterface);
         TranslatableText fromTextTranslation = new TranslatableText("gui.mineconomy.bank_check_from");
         TranslatableText toTextTranslation = new TranslatableText("gui.mineconomy.bank_check_to");
         TranslatableText amountTextTranslation = new TranslatableText("gui.mineconomy.bank_check_amount");
@@ -65,12 +68,12 @@ public class BankCheckGUI extends BaseScreen
     {
         center();
         MinecraftClient.getInstance().openScreen(this);
-        WInterface wInterface = getInterfaces().getInterfaces().get(0);
-        if(stack.getItem() instanceof ItemBankCheckbook)
+        WInterface wInterface = getInterfaceHolder().getInterfaces().get(0);
+        if(stack.getItem() instanceof BankCheckbookItem)
         {
             wInterface.setLabel(new TranslatableText("gui.mineconomy.bank_check_title", ""));
         }
-        else if(stack.getItem() instanceof ItemBankCheck)
+        else if(stack.getItem() instanceof BankCheckItem)
         {
 
         }
@@ -89,7 +92,7 @@ public class BankCheckGUI extends BaseScreen
             byteBuf.writeDouble(amount);
             if (MinecraftClient.getInstance().player != null)
                 MinecraftClient.getInstance().player.closeContainer();
-            ClientSidePacketRegistry.INSTANCE.sendToServer(ModConstants.PACKET_BANK_CHECK_VALIDATION, byteBuf);
+            ClientSidePacketRegistry.INSTANCE.sendToServer(PacketRegistry.CHECKBOOK_VALIDATION, byteBuf);
         }
         catch (Exception e)
         {
@@ -97,20 +100,9 @@ public class BankCheckGUI extends BaseScreen
         }
     }
 
-    private void onValidate(ClientPlayerEntity player, int from, int to, double amount)
-    {
-        PacketByteBuf byteBuf = new PacketByteBuf(Unpooled.buffer());
-        byteBuf.writeInt(from);
-        byteBuf.writeInt(to);
-        byteBuf.writeDouble(amount);
-        if (MinecraftClient.getInstance().player != null)
-            MinecraftClient.getInstance().player.closeContainer();
-        ClientSidePacketRegistry.INSTANCE.sendToServer(ModConstants.PACKET_BANK_CHECK_VALIDATION, byteBuf);
-    }
-
     private void center()
     {
-        WInterface wInterface = getInterfaces().getInterfaces().get(0);
+        WInterface wInterface = getInterfaceHolder().getInterfaces().get(0);
         wInterface.center();
 
         int widgetMarginX = 10;

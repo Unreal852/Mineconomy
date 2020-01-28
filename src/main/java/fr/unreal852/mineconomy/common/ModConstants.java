@@ -1,28 +1,7 @@
 package fr.unreal852.mineconomy.common;
 
-import fr.unreal852.mineconomy.common.blocks.BlocksRegistry;
-import fr.unreal852.mineconomy.common.items.ItemsRegistry;
-import fr.unreal852.mineconomy.common.registry.IModRegistrable;
-import fr.unreal852.mineconomy.common.registry.registrables.BlocksRegistrable;
-import fr.unreal852.mineconomy.common.registry.registrables.ItemsRegistrable;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
-
-import java.io.File;
-
 public final class ModConstants
 {
-    public static final String                         MOD_ID                        = "mineconomy";
-    public static final String                         MOD_LOGGER_ID                 = "Mineconomy";
-    public static final File                           CONFIG_FILES_DIRECTORY        = new File(FabricLoader.getInstance().getConfigDirectory(), "Mineconomy");
-    public static final File                           BANK_FILES_DIRECTORY          = new File(CONFIG_FILES_DIRECTORY, "Bank");
-    public static final File                           BANK_ACCOUNTS_FILES_DIRECTORY = new File(BANK_FILES_DIRECTORY, "Accounts");
-    public static final ItemGroup                      MOD_ITEM_GROUP                = FabricItemGroupBuilder.build(ModUtils.getIdentifier("tab_mineconomy"), () -> new ItemStack(ItemsRegistry.CREDIT_CARD.getItem()));
-    public static final Identifier                     PACKET_BANK_CHECK_VALIDATION  = ModUtils.getIdentifier("pck_bank_check_validation");
-    public static final Identifier                     PACKET_BANK_ACCOUNT_CREATION  = ModUtils.getIdentifier("pck_bank_account_creation");
-    public static final IModRegistrable<ItemsRegistry>  REGISTRY_ITEMS  = new ItemsRegistrable<>();
-    public static final IModRegistrable<BlocksRegistry> REGISTRY_BLOCKS = new BlocksRegistrable<>();
+    public static final String MOD_ID        = "mineconomy";
+    public static final String MOD_LOGGER_ID = "Mineconomy";
 }

@@ -1,5 +1,7 @@
 package fr.unreal852.mineconomy.client.gui;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 import spinnery.widget.*;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
+@Environment(EnvType.CLIENT)
 public final class GUIHelper
 {
     public static void setTheme(String themeName, Collection<WWidget> widgets)

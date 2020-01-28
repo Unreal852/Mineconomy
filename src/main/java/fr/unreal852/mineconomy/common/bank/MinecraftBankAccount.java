@@ -14,9 +14,12 @@ public class MinecraftBankAccount
     private boolean m_contactlessPaymentEnabled = false;
     private boolean m_accountLocked             = false;
 
-    public MinecraftBankAccount()
+    public MinecraftBankAccount(int accountID ,String accountName, String accountCode, String accountOwnerName)
     {
-
+        m_accountID =accountID;
+        m_accountName = accountName;
+        m_accountCode = accountCode;
+        m_accountOwnerName = accountOwnerName;
     }
 
     public UUID getOwnerUUID()

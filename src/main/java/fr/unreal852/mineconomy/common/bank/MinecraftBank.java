@@ -1,6 +1,6 @@
 package fr.unreal852.mineconomy.common.bank;
 
-import net.fabricmc.loader.api.FabricLoader;
+import fr.unreal852.ucorefabric.util.JavaUtils;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -44,12 +44,7 @@ public class MinecraftBank
 
     public MinecraftBankAccount findAccount(Predicate<MinecraftBankAccount> accountPredicate)
     {
-        for (MinecraftBankAccount account : getAccounts())
-        {
-            if (accountPredicate.test(account))
-                return account;
-        }
-        return null;
+        return JavaUtils.find(getAccounts(), accountPredicate);
     }
 
     public MinecraftBankAccount getAccountByID(int accountID)
@@ -61,20 +56,20 @@ public class MinecraftBank
 
     public MinecraftBankAccount getAccountByOwnerUUID(UUID uuid)
     {
-        return findAccount((account -> account.getOwnerUUID() == uuid));
+        return JavaUtils.find(getAccounts(), account -> account.getOwnerUUID() == uuid);
     }
 
     public MinecraftBankAccount getAccountByName(String name)
     {
-        return findAccount((account -> account.getAccountName().toLowerCase().equals(name)));
+        return JavaUtils.find(getAccounts(), account -> account.getAccountName().toLowerCase().equals(name));
     }
 
     public MinecraftBankAccount getAccountByOwnerName(String ownerName)
     {
-        return findAccount((account -> account.getAccountOwnerName().toLowerCase().equals(ownerName)));
+        return JavaUtils.find(getAccounts(),account -> account.getAccountOwnerName().toLowerCase().equals(ownerName));
     }
 
-    public MinecraftBankActionResult registerAccount(MinecraftBankAccount account)
+    public MinecraftBankActionResult createAccount(MinecraftBankAccount account)
     {
         if (accountExists(account.getAccountID()))
             return new MinecraftBankActionResult(false, "Could not register account '" + account.getAccountID() + "' (Account ID already exists).");
@@ -84,7 +79,7 @@ public class MinecraftBank
 
     public MinecraftBankActionResult deleteAccount(int accountID)
     {
-        if(!accountExists(accountID))
+        if (!accountExists(accountID))
             return new MinecraftBankActionResult(false, "Could not delete account '" + accountID + "' (Account ID does not exists).");
         m_bankAccounts.remove(accountID);
         return new MinecraftBankActionResult(true, "Successfully deleted account '" + accountID + "'.");

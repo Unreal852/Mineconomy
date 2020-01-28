@@ -14,6 +14,7 @@
   "item.mineconomy.vending_machine": "Vending Machine",
   "block.mineconomy.vending_machine": "Vending Machine",
   "block.mineconomy.bank_management": "Bank Management",
+  "block.mineconomy.checkbook_printer": "Checkbook Printer",
   "gui.mineconomy.bank_check_title": "Bank Check (%s)",
   "gui.mineconomy.bank_check_to": "To",
   "gui.mineconomy.bank_check_from": "From",
@@ -26,6 +27,7 @@
   "gui.mineconomy.gui_bank_management_account_creation_account_id": "Account ID",
   "gui.mineconomy.gui_bank_management_account_creation_account_id_generator": "Generate",
   "gui.mineconomy.gui_bank_management_account_creation_account_code": "Account Code",
+  "gui.mineconomy.gui_bank_management_account_creation_account_contactless": "Contactless",
   "gui.mineconomy.gui_bank_management_account_creation_validate": "Create Account",
   "gui.mineconomy.gui_bank_management_account_consultation_name": "Account Consultation",
   "itemGroup.mineconomy.tab_mineconomy": "Mineconomy"

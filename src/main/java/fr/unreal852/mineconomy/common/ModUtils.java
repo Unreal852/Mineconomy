@@ -1,5 +1,8 @@
 package fr.unreal852.mineconomy.common;
 
+import fr.unreal852.mineconomy.common.registry.ItemGroupRegistry;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
@@ -14,20 +17,8 @@ public final class ModUtils
         return new Identifier(ModConstants.MOD_ID, string);
     }
 
-    public static int randInt(int min, int max)
+    public static Item createItem(ItemGroup group)
     {
-        return ThreadLocalRandom.current().nextInt(min, max);
-    }
-
-    public static ItemStack findItemStack(Iterable<ItemStack> itemStacks, Predicate<ItemStack> itemStackPredicate)
-    {
-        if(itemStacks == null)
-            return null;
-        for(ItemStack stack : itemStacks)
-        {
-            if(itemStackPredicate.test(stack))
-                return stack;
-        }
-        return null;
+        return new Item(new Item.Settings().group(group == null ? ItemGroupRegistry.MINECONOMY_GROUP : group));
     }
 }

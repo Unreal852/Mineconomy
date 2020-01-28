@@ -2,9 +2,17 @@ package fr.unreal852.mineconomy.client.gui;
 
 
 import fr.unreal852.mineconomy.common.ModUtils;
+import fr.unreal852.mineconomy.common.registry.PacketRegistry;
+import fr.unreal852.ucorefabric.util.JavaUtils;
+import io.netty.buffer.Unpooled;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.PacketByteBuf;
 import spinnery.widget.*;
 
+@Environment(EnvType.CLIENT)
 public class BankAccountCreationTab
 {
     private WTabHolder.WTab m_tab;
@@ -27,7 +35,7 @@ public class BankAccountCreationTab
         TranslatableText accountSecretCodeTranslation = new TranslatableText("gui.mineconomy.gui_bank_management_account_creation_account_code");
         TranslatableText accountOwnerNameTranslation = new TranslatableText("gui.mineconomy.gui_bank_management_account_creation_account_owner_name");
         TranslatableText accountGenerateIDTranslation = new TranslatableText("gui.mineconomy.gui_bank_management_account_creation_account_id_generator");
-        TranslatableText accountCreateTranslation = new TranslatableText("gui.mineconomy.gui_bank_management_account_creation_account_id_generator");
+        TranslatableText accountCreateTranslation = new TranslatableText("gui.mineconomy.gui_bank_management_account_creation_validate");
         WInterface wInterface = m_tab.getToggle().getInterface();
         m_textAccountName = new WStaticText(GUIHelper.getPosition(0, 0), wInterface, accountNameTranslation);
         m_textAccountID = new WStaticText(GUIHelper.getPosition(0, 0), wInterface, accountIDTranslation);
@@ -73,19 +81,38 @@ public class BankAccountCreationTab
         m_textAccountOwnerName.setPosition(GUIHelper.getPosition(0, 17, m_textAccountSecretCode));
         m_fieldAccountOwnerName.setPosition(GUIHelper.getPosition(largestStringWidth + widgetMarginX, fieldMarginY, m_textAccountOwnerName));
         m_fieldAccountOwnerName.setSize(WSize.of(textFieldsWidth, 15));
+
+        m_buttonCreateAccount.setSize(WSize.of((GUIHelper.getStringWidth(m_buttonCreateAccount.getLabel().asString() + widgetMarginX)), 15));
+        m_buttonCreateAccount.setPosition(GUIHelper.getPosition(wInterface.getWidth() - (m_buttonCreateAccount.getWidth() + 5), wInterface.getHeight() - 25, wInterface));
     }
 
     private void createAccount()
     {
-        if(!m_buttonCreateAccount.getFocus())
+        if (!m_buttonCreateAccount.getFocus())
             return;
-
+        try
+        {
+            String accountName = m_fieldAccountName.getText();
+            int accountID = Integer.parseInt(m_fieldAccountID.getText());
+            String accountCode = m_fieldAccountSecretCode.getText();
+            String accountOwnerName = m_fieldAccountOwnerName.getText();
+            PacketByteBuf packetByteBuf = new PacketByteBuf(Unpooled.buffer());
+            packetByteBuf.writeString(accountName);
+            packetByteBuf.writeInt(accountID);
+            packetByteBuf.writeString(accountCode);
+            packetByteBuf.writeString(accountOwnerName);
+            ClientSidePacketRegistry.INSTANCE.sendToServer(PacketRegistry.ACCOUNT_CREATION, packetByteBuf);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     private void generateAccountID()
     {
         if (!m_buttonAccountID.getFocus())
             return;
-        m_fieldAccountID.setText(String.valueOf(ModUtils.randInt(100000, 999999)));
+        m_fieldAccountID.setText(String.valueOf(JavaUtils.randInt(100000, 999999)));
     }
 }
