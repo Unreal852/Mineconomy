@@ -5,7 +5,7 @@ import fr.unreal852.mineconomy.common.block.entity.CheckbookPrinterBlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 
 import static fr.unreal852.ucorefabric.registry.ModRegistry.*;
-import static fr.unreal852.mineconomy.common.ModUtils.getIdentifier;
+import static fr.unreal852.mineconomy.common.ModHelper.getIdentifier;
 
 public final class EntityRegistry
 {

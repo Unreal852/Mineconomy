@@ -24,7 +24,7 @@ public class MinecraftBank
 
     public MinecraftBank()
     {
-
+        createAccount(new MinecraftBankAccount(852852, m_bankName, "8524", m_bankName));
     }
 
     public String getBankName()

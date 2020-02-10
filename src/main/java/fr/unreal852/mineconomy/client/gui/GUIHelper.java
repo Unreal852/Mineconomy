@@ -4,6 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import spinnery.widget.*;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public final class GUIHelper
         if(widgets == null || widgets.size() == 0)
             return;
         for(WWidget widget : widgets)
-            widget.setTheme(themeName);
+            widget.setTheme(new Identifier(themeName));
     }
 
     public static void setTheme(String themeName, WWidget... widgets)

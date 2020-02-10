@@ -25,18 +25,18 @@ public class BankManagementGUI extends BaseScreen
         m_titleInterface = new WInterface(GUIHelper.getPosition(0, 0), WSize.of(350, 25));
         getInterfaceHolder().add(m_titleInterface, m_mainInterface);
         m_tabHolder = new WTabHolder(GUIHelper.getPosition(0, 0, m_mainInterface), WSize.of(m_mainInterface), m_mainInterface);
-        m_titleInterface.setLabel(new TranslatableText("gui.mineconomy.gui_bank_management_title"));
+        m_titleInterface.setLabel(new TranslatableText("gui.mineconomy.bank_management_title"));
         m_mainInterface.add(m_tabHolder);
         initTabs();
         center();
-        GUIHelper.setTheme("dark", m_mainInterface, m_titleInterface);
-        GUIHelper.setTheme("dark", m_mainInterface.getWidgets());
+        GUIHelper.setTheme("spinnery:dark", m_mainInterface, m_titleInterface);
+        GUIHelper.setTheme("spinnery:dark", m_mainInterface.getWidgets());
     }
 
     private void initTabs()
     {
-        m_tabAccountCreation = new BankAccountCreationTab(m_tabHolder.addTab(ItemRegistry.MONEY_BANKNOTE_TEN, new TranslatableText("gui.mineconomy.gui_bank_management_account_creation_name")));
-        m_tabAccountConsultation = new BankAccountConsultationTab(m_tabHolder.addTab(ItemRegistry.MONEY_BANKNOTE_TEN, new TranslatableText("gui.mineconomy.gui_bank_management_account_consultation_name")));
+        m_tabAccountCreation = new BankAccountCreationTab(m_tabHolder.addTab(ItemRegistry.MONEY_BANKNOTE_TEN, new TranslatableText("gui.mineconomy.bank_management_account_creation_name")));
+        m_tabAccountConsultation = new BankAccountConsultationTab(m_tabHolder.addTab(ItemRegistry.MONEY_BANKNOTE_TEN, new TranslatableText("gui.mineconomy.bank_management_account_consultation_name")));
     }
 
     private void center()

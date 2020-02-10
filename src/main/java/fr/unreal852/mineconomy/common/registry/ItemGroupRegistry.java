@@ -5,7 +5,7 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
-import static fr.unreal852.mineconomy.common.ModUtils.getIdentifier;
+import static fr.unreal852.mineconomy.common.ModHelper.getIdentifier;
 
 public final class ItemGroupRegistry
 {

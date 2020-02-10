@@ -3,7 +3,7 @@ package fr.unreal852.mineconomy.common.registry;
 import fr.unreal852.mineconomy.common.ModLogger;
 import net.minecraft.util.Identifier;
 
-import static fr.unreal852.mineconomy.common.ModUtils.getIdentifier;
+import static fr.unreal852.mineconomy.common.ModHelper.getIdentifier;
 
 public final class PacketRegistry
 {

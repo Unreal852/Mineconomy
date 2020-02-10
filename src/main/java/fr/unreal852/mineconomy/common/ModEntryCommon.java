@@ -19,6 +19,7 @@ public class ModEntryCommon implements ModInitializer
         BlockRegistry.inititalize();
         EntityRegistry.inititalize();
         PacketRegistry.inititalize();
+        ContainerRegistry.initalize();
         ServerSidePacketRegistry.INSTANCE.register(PacketRegistry.ACCOUNT_CREATION, ServerPacketsHandlers::onReceiveAccountCreation);
         ServerSidePacketRegistry.INSTANCE.register(PacketRegistry.ACCOUNT_DELETION, ServerPacketsHandlers::onReceiveAccountDeletion);
         ServerSidePacketRegistry.INSTANCE.register(PacketRegistry.CHECKBOOK_VALIDATION, ServerPacketsHandlers::onReceiveCheckbookValidation);

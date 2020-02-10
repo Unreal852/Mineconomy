@@ -60,8 +60,8 @@ public class BankCheckGUI extends BaseScreen
         wInterface.add(m_fromText, m_fromField, m_toText, m_toField, m_amountText, m_amountField, m_validateButton);
         wInterface.setLabel(new LiteralText(""));
         center();
-        GUIHelper.setTheme("dark", wInterface);
-        GUIHelper.setTheme("dark", wInterface.getWidgets());
+        GUIHelper.setTheme("spinnery:dark", wInterface);
+        GUIHelper.setTheme("spinnery:dark", wInterface.getWidgets());
     }
 
     public void open(ItemStack stack)
@@ -69,11 +69,11 @@ public class BankCheckGUI extends BaseScreen
         center();
         MinecraftClient.getInstance().openScreen(this);
         WInterface wInterface = getInterfaceHolder().getInterfaces().get(0);
-        if(stack.getItem() instanceof BankCheckbookItem)
+        if (stack.getItem() instanceof BankCheckbookItem)
         {
             wInterface.setLabel(new TranslatableText("gui.mineconomy.bank_check_title", ""));
         }
-        else if(stack.getItem() instanceof BankCheckItem)
+        else if (stack.getItem() instanceof BankCheckItem)
         {
 
         }
@@ -81,7 +81,7 @@ public class BankCheckGUI extends BaseScreen
 
     private void onValidateClicked()
     {
-        if(!m_validateButton.getFocus() || MinecraftClient.getInstance().player == null)
+        if (!m_validateButton.getFocus() || MinecraftClient.getInstance().player == null)
             return;
         try
         {

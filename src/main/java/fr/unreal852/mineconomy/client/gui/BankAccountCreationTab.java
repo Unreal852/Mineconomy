@@ -1,7 +1,6 @@
 package fr.unreal852.mineconomy.client.gui;
 
 
-import fr.unreal852.mineconomy.common.ModUtils;
 import fr.unreal852.mineconomy.common.registry.PacketRegistry;
 import fr.unreal852.ucorefabric.util.JavaUtils;
 import io.netty.buffer.Unpooled;
@@ -30,12 +29,12 @@ public class BankAccountCreationTab
     public BankAccountCreationTab(WTabHolder.WTab tab)
     {
         m_tab = tab;
-        TranslatableText accountNameTranslation = new TranslatableText("gui.mineconomy.gui_bank_management_account_creation_account_name");
-        TranslatableText accountIDTranslation = new TranslatableText("gui.mineconomy.gui_bank_management_account_creation_account_id");
-        TranslatableText accountSecretCodeTranslation = new TranslatableText("gui.mineconomy.gui_bank_management_account_creation_account_code");
-        TranslatableText accountOwnerNameTranslation = new TranslatableText("gui.mineconomy.gui_bank_management_account_creation_account_owner_name");
-        TranslatableText accountGenerateIDTranslation = new TranslatableText("gui.mineconomy.gui_bank_management_account_creation_account_id_generator");
-        TranslatableText accountCreateTranslation = new TranslatableText("gui.mineconomy.gui_bank_management_account_creation_validate");
+        TranslatableText accountNameTranslation = new TranslatableText("gui.mineconomy.bank_management_account_creation_account_name");
+        TranslatableText accountIDTranslation = new TranslatableText("gui.mineconomy.bank_management_account_creation_account_id");
+        TranslatableText accountSecretCodeTranslation = new TranslatableText("gui.mineconomy.bank_management_account_creation_account_code");
+        TranslatableText accountOwnerNameTranslation = new TranslatableText("gui.mineconomy.bank_management_account_creation_account_owner_name");
+        TranslatableText accountGenerateIDTranslation = new TranslatableText("gui.mineconomy.bank_management_account_creation_account_id_generator");
+        TranslatableText accountCreateTranslation = new TranslatableText("gui.mineconomy.bank_management_account_creation_validate");
         WInterface wInterface = m_tab.getToggle().getInterface();
         m_textAccountName = new WStaticText(GUIHelper.getPosition(0, 0), wInterface, accountNameTranslation);
         m_textAccountID = new WStaticText(GUIHelper.getPosition(0, 0), wInterface, accountIDTranslation);
@@ -53,7 +52,7 @@ public class BankAccountCreationTab
         m_buttonCreateAccount.setOnMouseClicked(this::createAccount);
         m_tab.add(m_textAccountName, m_fieldAccountName, m_textAccountID, m_fieldAccountID, m_textAccountSecretCode, m_fieldAccountSecretCode,
                   m_textAccountOwnerName, m_fieldAccountOwnerName, m_buttonAccountID, m_buttonCreateAccount);
-        GUIHelper.setTheme("dark", m_tab.getWidgets());
+        GUIHelper.setTheme("spinnery:dark", m_tab.getWidgets());
     }
 
     protected void center()

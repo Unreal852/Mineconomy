@@ -3,14 +3,9 @@ package fr.unreal852.mineconomy.common;
 import fr.unreal852.mineconomy.common.registry.ItemGroupRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-import java.util.Collection;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.function.Predicate;
-
-public final class ModUtils
+public final class ModHelper
 {
     public static Identifier getIdentifier(String string)
     {
