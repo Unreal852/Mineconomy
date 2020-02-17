@@ -16,8 +16,8 @@ import net.minecraft.util.math.BlockPos;
 @Environment(EnvType.CLIENT)
 public final class ScreenRegistry
 {
-    public static final Identifier BANK_CHECK_GUI      = ClientScreenRegistry.registerScreen(ModHelper.getIdentifier("gui:bank_check"), new BankCheckGUI());
-    public static final Identifier BANK_MANAGEMENT_GUI = ClientScreenRegistry.registerScreen(ModHelper.getIdentifier("gui:bank_management"), new BankManagementGUI());
+    public static final Identifier BANK_CHECK_GUI      = ClientScreenRegistry.registerScreen(ModHelper.getIdentifier("gui_bank_check"), new BankCheckGUI());
+    public static final Identifier BANK_MANAGEMENT_GUI = ClientScreenRegistry.registerScreen(ModHelper.getIdentifier("gui_bank_management"), new BankManagementGUI());
 
     public static void init()
     {

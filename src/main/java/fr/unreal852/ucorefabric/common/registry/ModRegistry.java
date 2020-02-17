@@ -24,6 +24,11 @@ public final class ModRegistry
 {
     public static void initRegistries(Class<?>... classes)
     {
+        initRegistries("init", classes);
+    }
+
+    public static void initRegistries(String initMethodName, Class<?>... classes)
+    {
         if (classes == null || classes.length == 0)
             return;
         for (Class<?> vClass : classes)
@@ -32,7 +37,7 @@ public final class ModRegistry
                 continue;
             try
             {
-                Method initMethod = vClass.getDeclaredMethod("init");
+                Method initMethod = vClass.getDeclaredMethod(initMethodName);
                 if (!Modifier.isStatic(initMethod.getModifiers()))
                     continue;
                 if (!initMethod.isAccessible())
