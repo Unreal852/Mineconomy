@@ -40,7 +40,7 @@ public class BankManagementBlock extends Block
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit)
     {
         if (world.isClient)
-            ModEntryCommon.PROXY.openScreen(ModHelper.getIdentifier("gui:bank_management"));
+            ModEntryCommon.PROXY.openScreen(ModHelper.getIdentifier("gui_bank_management"));
         return super.onUse(state, world, pos, player, hand, hit);
     }
 

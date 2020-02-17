@@ -10,7 +10,7 @@ public class BankAccountConsultationTab
 {
     private WTabHolder.WTab m_tab;
 
-    public BankAccountConsultationTab(WTabHolder.WTab wTab)
+    public BankAccountConsultationTab(WTabHolder tabHolder,WTabHolder.WTab wTab)
     {
         m_tab = wTab;
 

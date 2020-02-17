@@ -4,6 +4,7 @@ import fr.unreal852.mineconomy.common.registry.ItemRegistry;
 import fr.unreal852.ucorefabric.client.screen.ICachedScreen;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.TranslatableText;
 import spinnery.client.BaseScreen;
 import spinnery.widget.WInterface;
@@ -24,7 +25,7 @@ public class BankManagementGUI extends BaseScreen implements ICachedScreen
     {
         super();
         WInterface mainInterface = getInterface();
-        m_mainPanel = mainInterface.createChild(WPanel.class, Position.of(mainInterface, 0, 0), Size.of(180, 100)).setLabel(new TranslatableText("gui.mineconomy.bank_management_title"));
+        m_mainPanel = mainInterface.createChild(WPanel.class, Position.of(mainInterface, 0, 0), Size.of(450, 250)).setLabel(new TranslatableText("gui.mineconomy.bank_management_title"));
         m_tabHolder = m_mainPanel.createChild(WTabHolder.class, Position.of(m_mainPanel, 0, 0), Size.of(m_mainPanel));
         initTabs();
         GUIHelper.setTheme("spinnery:dark", m_mainPanel);
@@ -35,12 +36,13 @@ public class BankManagementGUI extends BaseScreen implements ICachedScreen
     public void open(Object... params)
     {
         center();
+        MinecraftClient.getInstance().openScreen(this);
     }
 
     private void initTabs()
     {
-        m_tabAccountCreation = new BankAccountCreationTab(m_tabHolder.addTab(ItemRegistry.MONEY_BANKNOTE_TEN, new TranslatableText("gui.mineconomy.bank_management_account_creation_name")));
-        m_tabAccountConsultation = new BankAccountConsultationTab(m_tabHolder.addTab(ItemRegistry.MONEY_BANKNOTE_TEN, new TranslatableText("gui.mineconomy.bank_management_account_consultation_name")));
+        m_tabAccountCreation = new BankAccountCreationTab(m_tabHolder, m_tabHolder.addTab(ItemRegistry.MONEY_BANKNOTE_TEN, new TranslatableText("gui.mineconomy.bank_management_account_creation_name")));
+        m_tabAccountConsultation = new BankAccountConsultationTab(m_tabHolder, m_tabHolder.addTab(ItemRegistry.MONEY_BANKNOTE_TEN, new TranslatableText("gui.mineconomy.bank_management_account_consultation_name")));
     }
 
     private void center()

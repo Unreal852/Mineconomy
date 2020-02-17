@@ -35,10 +35,10 @@ public class BankCheckGUI extends BaseScreen implements ICachedScreen
         super();
 
         WInterface mainInterface = getInterface();
-        m_mainPanel = mainInterface.createChild(WPanel.class);
-        m_fromText = m_mainPanel.createChild(WStaticText.class).setLabel(new TranslatableText("gui.mineconomy.bank_check_from"));
-        m_toText = m_mainPanel.createChild(WStaticText.class).setLabel(new TranslatableText("gui.mineconomy.bank_check_to"));
-        m_amountText = m_mainPanel.createChild(WStaticText.class).setLabel(new TranslatableText("gui.mineconomy.bank_check_amount"));
+        m_mainPanel = mainInterface.createChild(WPanel.class).setSize(Size.of(250, 100));
+        m_fromText = m_mainPanel.createChild(WStaticText.class).setText(new TranslatableText("gui.mineconomy.bank_check_from"));
+        m_toText = m_mainPanel.createChild(WStaticText.class).setText(new TranslatableText("gui.mineconomy.bank_check_to"));
+        m_amountText = m_mainPanel.createChild(WStaticText.class).setText(new TranslatableText("gui.mineconomy.bank_check_amount"));
         m_fromField = m_mainPanel.createChild(WTextField.class).setEditable(false);
         m_toField = m_mainPanel.createChild(WTextField.class);
         m_amountField = m_mainPanel.createChild(WTextField.class);
@@ -53,21 +53,18 @@ public class BankCheckGUI extends BaseScreen implements ICachedScreen
         if (params == null || params.length != 1 || !(params[0] instanceof ItemStack))
             return;
         ItemStack itemStack = (ItemStack) params[0];
-        center();
-        MinecraftClient.getInstance().openScreen(this);
         if (itemStack.getItem() instanceof BankCheckbookItem)
         {
-
+            m_mainPanel.setLabel(new TranslatableText("gui.mineconomy.bank_check_title", ""));
         }
         else if (itemStack.getItem() instanceof BankCheckItem)
         {
-
+            m_mainPanel.setLabel(new TranslatableText("gui.mineconomy.bank_check_title", ""));
         }
         else
-        {
-            if (MinecraftClient.getInstance().currentScreen != null)
-                MinecraftClient.getInstance().currentScreen.onClose();
-        }
+            return;
+        center();
+        MinecraftClient.getInstance().openScreen(this);
     }
 
     private void onValidateClicked()

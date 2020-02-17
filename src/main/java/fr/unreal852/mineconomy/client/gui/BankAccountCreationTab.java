@@ -15,8 +15,8 @@ import spinnery.widget.api.Size;
 @Environment(EnvType.CLIENT)
 public class BankAccountCreationTab
 {
+    private WTabHolder      m_tabHolder;
     private WTabHolder.WTab m_tab;
-    private WPanel          m_mainPanel;
     private WStaticText     m_textAccountName;
     private WStaticText     m_textAccountID;
     private WStaticText     m_textAccountSecretCode;
@@ -28,22 +28,22 @@ public class BankAccountCreationTab
     private WButton         m_buttonAccountID;
     private WButton         m_buttonCreateAccount;
 
-    public BankAccountCreationTab(WTabHolder.WTab tab)
+    public BankAccountCreationTab(WTabHolder tabHolder, WTabHolder.WTab tab)
     {
+        m_tabHolder = tabHolder;
         m_tab = tab;
         WInterface mainInterface = tab.getInterface();
-        m_mainPanel = mainInterface.createChild(WPanel.class);
-        m_textAccountName = m_mainPanel.createChild(WStaticText.class).setLabel(new TranslatableText("gui.mineconomy.bank_management_account_creation_account_name"));
-        m_textAccountID = m_mainPanel.createChild(WStaticText.class).setLabel(new TranslatableText("gui.mineconomy.bank_management_account_creation_account_id"));
-        m_textAccountSecretCode = m_mainPanel.createChild(WStaticText.class).setLabel(new TranslatableText("gui.mineconomy.bank_management_account_creation_account_code"));
-        m_textAccountOwnerName = m_mainPanel.createChild(WStaticText.class).setLabel(new TranslatableText("gui.mineconomy.bank_management_account_creation_account_owner_name"));
-        m_fieldAccountName = m_mainPanel.createChild(WTextField.class);
-        m_fieldAccountID = m_mainPanel.createChild(WTextField.class);
-        m_fieldAccountSecretCode = m_mainPanel.createChild(WTextField.class);
-        m_fieldAccountOwnerName = m_mainPanel.createChild(WTextField.class);
-        m_buttonAccountID = m_mainPanel.createChild(WButton.class).setOnMouseClicked(((widget, x, y, z) -> generateAccountID())).setLabel(new TranslatableText("gui.mineconomy.bank_management_account_creation_account_id_generator"));
-        m_buttonCreateAccount = m_mainPanel.createChild(WButton.class).setOnMouseClicked(((widget, x, y, z) -> createAccount())).setLabel(new TranslatableText("gui.mineconomy.bank_management_account_creation_validate"));
-        GUIHelper.setTheme("spinnery:dark", m_mainPanel.getWidgets());
+        m_textAccountName = m_tab.createChild(WStaticText.class).setText(new TranslatableText("gui.mineconomy.bank_management_account_creation_account_name"));
+        m_textAccountID = m_tab.createChild(WStaticText.class).setText(new TranslatableText("gui.mineconomy.bank_management_account_creation_account_id"));
+        m_textAccountSecretCode = m_tab.createChild(WStaticText.class).setText(new TranslatableText("gui.mineconomy.bank_management_account_creation_account_code"));
+        m_textAccountOwnerName = m_tab.createChild(WStaticText.class).setText(new TranslatableText("gui.mineconomy.bank_management_account_creation_account_owner_name"));
+        m_fieldAccountName = m_tab.createChild(WTextField.class);
+        m_fieldAccountID = m_tab.createChild(WTextField.class);
+        m_fieldAccountSecretCode = m_tab.createChild(WTextField.class);
+        m_fieldAccountOwnerName = m_tab.createChild(WTextField.class);
+        m_buttonAccountID = m_tab.createChild(WButton.class).setOnMouseClicked(((widget, x, y, z) -> generateAccountID())).setLabel(new TranslatableText("gui.mineconomy.bank_management_account_creation_account_id_generator"));
+        m_buttonCreateAccount = m_tab.createChild(WButton.class).setOnMouseClicked(((widget, x, y, z) -> createAccount())).setLabel(new TranslatableText("gui.mineconomy.bank_management_account_creation_validate"));
+        GUIHelper.setTheme("spinnery:dark", m_tab.getWidgets());
     }
 
     private void createAccount()
@@ -82,14 +82,14 @@ public class BankAccountCreationTab
         int widgetMarginY = 18;
         int fieldMarginY = -4;
         int largestStringWidth = GUIHelper.getLargestString(m_textAccountName.getText().asString(), m_textAccountID.getText().asString(), m_textAccountSecretCode.getText().asString(), m_textAccountOwnerName.getText().asString());
-        int textFieldsWidth = m_mainPanel.getWidth() - (largestStringWidth + 25);
-        m_textAccountName.setPosition(Position.of(m_mainPanel, widgetMarginX, 35));
+        int textFieldsWidth = m_tabHolder.getWidth() - (largestStringWidth + 25);
+        m_textAccountName.setPosition(Position.of(m_tabHolder, widgetMarginX, 35));
         m_fieldAccountName.setPosition(Position.of(m_textAccountName, largestStringWidth + widgetMarginX, fieldMarginY));
         m_fieldAccountName.setSize(Size.of(textFieldsWidth, 15));
 
         m_textAccountID.setPosition(Position.of(m_textAccountName, 0, widgetMarginY));
         m_buttonAccountID.setSize(Size.of(GUIHelper.getStringWidth(m_buttonAccountID.getLabel().asString() + widgetMarginX), 15));
-        m_buttonAccountID.setPosition(Position.of(m_textAccountID, m_mainPanel.getWidth() - ((widgetMarginX + 5) + m_buttonAccountID.getWidth()), fieldMarginY));
+        m_buttonAccountID.setPosition(Position.of(m_textAccountID, m_tabHolder.getWidth() - ((widgetMarginX + 5) + m_buttonAccountID.getWidth()), fieldMarginY));
         m_fieldAccountID.setPosition(Position.of(m_textAccountID, largestStringWidth + widgetMarginX, fieldMarginY));
         m_fieldAccountID.setSize(Size.of(textFieldsWidth - (m_buttonAccountID.getWidth() + (widgetMarginX / 2)), 15));
 
@@ -102,6 +102,6 @@ public class BankAccountCreationTab
         m_fieldAccountOwnerName.setSize(Size.of(textFieldsWidth, 15));
 
         m_buttonCreateAccount.setSize(Size.of((GUIHelper.getStringWidth(m_buttonCreateAccount.getLabel().asString() + widgetMarginX)), 15));
-        m_buttonCreateAccount.setPosition(Position.of(m_mainPanel, m_mainPanel.getWidth() - (m_buttonCreateAccount.getWidth() + 5), m_mainPanel.getHeight() - 25));
+        m_buttonCreateAccount.setPosition(Position.of(m_tabHolder, m_tabHolder.getWidth() - (m_buttonCreateAccount.getWidth() + 5), m_tabHolder.getHeight() - 25));
     }
 }
