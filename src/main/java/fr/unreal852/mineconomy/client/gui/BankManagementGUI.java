@@ -27,7 +27,6 @@ public class BankManagementGUI extends BaseScreen implements ICachedScreen
         m_mainPanel = mainInterface.createChild(WPanel.class, Position.of(mainInterface, 0, 0), Size.of(180, 100)).setLabel(new TranslatableText("gui.mineconomy.bank_management_title"));
         m_tabHolder = m_mainPanel.createChild(WTabHolder.class, Position.of(m_mainPanel, 0, 0), Size.of(m_mainPanel));
         initTabs();
-        center();
         GUIHelper.setTheme("spinnery:dark", m_mainPanel);
         GUIHelper.setTheme("spinnery:dark", m_mainPanel.getWidgets());
     }

@@ -15,12 +15,8 @@ minecraft {
 
 repositories {
     maven {
-        name = "Cotton"
-        url "http://server.bbkr.space:8081/artifactory/libs-release"
-    }
-    maven {
-        name = "JitPack"
-		url 'https://jitpack.io'
+        name = "Bintray"
+		url 'https://dl.bintray.com/spinnery/Spinnery'
 	}
 }
 
@@ -35,7 +31,8 @@ dependencies {
 
     // PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
     // You may need to force-disable transitiveness on them.
-    modImplementation 'com.github.vini2003:Spinnery:breaking-SNAPSHOT'
+    //modImplementation 'com.github.vini2003:Spinnery:breaking-SNAPSHOT'
+    modImplementation 'com.github.vini2003:spinnery:2.0.10+fabric-1.15'
 }
 
 processResources {

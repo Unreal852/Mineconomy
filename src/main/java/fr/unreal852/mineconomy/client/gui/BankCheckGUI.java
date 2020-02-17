@@ -45,7 +45,6 @@ public class BankCheckGUI extends BaseScreen implements ICachedScreen
         m_validateButton = m_mainPanel.createChild(WButton.class).setOnMouseClicked((wButton, x, y, z) -> onValidateClicked()).setLabel(new TranslatableText("gui.mineconomy.bank_check_validate"));
         GUIHelper.setTheme("spinnery:dark", m_mainPanel);
         GUIHelper.setTheme("spinnery:dark", m_mainPanel.getWidgets());
-        center();
     }
 
     @Override
