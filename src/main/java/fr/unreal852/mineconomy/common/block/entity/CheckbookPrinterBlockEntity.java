@@ -10,7 +10,7 @@ import net.minecraft.util.Tickable;
 
 public class CheckbookPrinterBlockEntity extends BlockEntity implements Tickable
 {
-    private BlockEntityInventory m_inventory   = new BlockEntityInventory(this, 3);
+    private BlockEntityInventory m_inventory   = new BlockEntityInventory(this, 2);
     private int                  m_printTime   = 20 * 2;
     private int                  m_currentTick = 0;
 
@@ -35,14 +35,14 @@ public class CheckbookPrinterBlockEntity extends BlockEntity implements Tickable
         ItemStack sourceStack = getInventory().getInvStack(0);
         if (sourceStack.getItem() == Items.PAPER && sourceStack.getCount() > 0)
         {
-            ItemStack resultStack = getInventory().getInvStack(2);
+            ItemStack resultStack = getInventory().getInvStack(1);
             if (resultStack.getItem() != ItemRegistry.BANK_CHECKBOOK)
                 resultStack = new ItemStack(ItemRegistry.BANK_CHECKBOOK, 0);
             if (resultStack.getCount() < ItemRegistry.BANK_CHECKBOOK.getMaxCount())
             {
                 getInventory().takeInvStack(0, 1);
                 resultStack.increment(1);
-                getInventory().setInvStack(2, resultStack);
+                getInventory().setInvStack(1, resultStack);
             }
         }
         m_currentTick = 0;

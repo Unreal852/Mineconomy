@@ -1,6 +1,6 @@
 package fr.unreal852.mineconomy.common.bank;
 
-import fr.unreal852.ucorefabric.util.JavaUtils;
+import fr.unreal852.ucorefabric.common.util.JavaUtils;
 
 import java.util.Collection;
 import java.util.HashMap;

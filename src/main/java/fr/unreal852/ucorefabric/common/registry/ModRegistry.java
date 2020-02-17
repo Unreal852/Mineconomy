@@ -1,4 +1,4 @@
-package fr.unreal852.ucorefabric.registry;
+package fr.unreal852.ucorefabric.common.registry;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -16,10 +16,36 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.function.Supplier;
 
 public final class ModRegistry
 {
+    public static void initRegistries(Class<?>... classes)
+    {
+        if (classes == null || classes.length == 0)
+            return;
+        for (Class<?> vClass : classes)
+        {
+            if (!Modifier.isFinal(vClass.getModifiers()))
+                continue;
+            try
+            {
+                Method initMethod = vClass.getDeclaredMethod("init");
+                if (!Modifier.isStatic(initMethod.getModifiers()))
+                    continue;
+                if (!initMethod.isAccessible())
+                    initMethod.setAccessible(true);
+                initMethod.invoke(null);
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+            }
+        }
+    }
+
     public static <T extends Block> T registerBlock(Identifier identifier, T block)
     {
         return registerBlock(identifier, block, (BlockItem) null);

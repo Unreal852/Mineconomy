@@ -11,7 +11,7 @@ public final class ItemGroupRegistry
 {
     public static final ItemGroup MINECONOMY_GROUP = FabricItemGroupBuilder.build(getIdentifier("tab_mineconomy"), () -> new ItemStack(ItemRegistry.CREDIT_CARD));
 
-    public static void inititalize()
+    public static void init()
     {
         ModLogger.LogInfo("Registered Item Groups !");
     }

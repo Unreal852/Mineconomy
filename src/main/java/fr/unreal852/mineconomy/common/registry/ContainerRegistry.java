@@ -9,7 +9,7 @@ public final class ContainerRegistry
 {
     public static final Identifier CHECKBOOK_PRINTER_CONTAINER = ModHelper.getIdentifier("checkbook_printer_container");
 
-    public static void initalize()
+    public static void init()
     {
         ContainerProviderRegistry.INSTANCE.registerFactory(CHECKBOOK_PRINTER_CONTAINER, (syncId, id, player, buf) -> new CheckbookPrinterContainer(syncId, player.inventory, buf.readBlockPos()));
     }

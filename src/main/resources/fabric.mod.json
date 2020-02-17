@@ -2,7 +2,6 @@
   "schemaVersion": 1,
   "id": "mineconomy",
   "version": "${version}",
-
   "name": "Mineconomy",
   "description": "Adds economy to minecraft !",
   "authors": [
@@ -12,10 +11,8 @@
     "homepage": "https://github.com/Unreal852",
     "sources": "https://github.com/Unreal852/Mineconomy"
   },
-
   "license": "CC0-1.0",
   "icon": "assets/mineconomy/icon.png",
-
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -33,7 +30,6 @@
     "mineconomy.common.mixins.json",
     "mineconomy.server.mixins.json"
   ],
-
   "depends": {
     "fabricloader": ">=0.7.2",
     "fabric": "*",

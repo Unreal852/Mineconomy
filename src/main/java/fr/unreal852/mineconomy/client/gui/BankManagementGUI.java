@@ -1,19 +1,21 @@
 package fr.unreal852.mineconomy.client.gui;
 
 import fr.unreal852.mineconomy.common.registry.ItemRegistry;
+import fr.unreal852.ucorefabric.client.screen.ICachedScreen;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.text.TranslatableText;
 import spinnery.client.BaseScreen;
 import spinnery.widget.WInterface;
-import spinnery.widget.WSize;
+import spinnery.widget.WPanel;
 import spinnery.widget.WTabHolder;
+import spinnery.widget.api.Position;
+import spinnery.widget.api.Size;
 
 @Environment(EnvType.CLIENT)
-public class BankManagementGUI extends BaseScreen
+public class BankManagementGUI extends BaseScreen implements ICachedScreen
 {
-    private WInterface                 m_mainInterface;
-    private WInterface                 m_titleInterface;
+    private WPanel                     m_mainPanel;
     private WTabHolder                 m_tabHolder;
     private BankAccountCreationTab     m_tabAccountCreation;
     private BankAccountConsultationTab m_tabAccountConsultation;
@@ -21,16 +23,19 @@ public class BankManagementGUI extends BaseScreen
     public BankManagementGUI()
     {
         super();
-        m_mainInterface = new WInterface(GUIHelper.getPosition(0, 0), WSize.of(350, 200));
-        m_titleInterface = new WInterface(GUIHelper.getPosition(0, 0), WSize.of(350, 25));
-        getInterfaceHolder().add(m_titleInterface, m_mainInterface);
-        m_tabHolder = new WTabHolder(GUIHelper.getPosition(0, 0, m_mainInterface), WSize.of(m_mainInterface), m_mainInterface);
-        m_titleInterface.setLabel(new TranslatableText("gui.mineconomy.bank_management_title"));
-        m_mainInterface.add(m_tabHolder);
+        WInterface mainInterface = getInterface();
+        m_mainPanel = mainInterface.createChild(WPanel.class, Position.of(mainInterface, 0, 0), Size.of(180, 100)).setLabel(new TranslatableText("gui.mineconomy.bank_management_title"));
+        m_tabHolder = m_mainPanel.createChild(WTabHolder.class, Position.of(m_mainPanel, 0, 0), Size.of(m_mainPanel));
         initTabs();
         center();
-        GUIHelper.setTheme("spinnery:dark", m_mainInterface, m_titleInterface);
-        GUIHelper.setTheme("spinnery:dark", m_mainInterface.getWidgets());
+        GUIHelper.setTheme("spinnery:dark", m_mainPanel);
+        GUIHelper.setTheme("spinnery:dark", m_mainPanel.getWidgets());
+    }
+
+    @Override
+    public void open(Object... params)
+    {
+        center();
     }
 
     private void initTabs()
@@ -41,8 +46,7 @@ public class BankManagementGUI extends BaseScreen
 
     private void center()
     {
-        m_mainInterface.center();
-        m_titleInterface.setPosition(GUIHelper.getPosition(0, -16, m_mainInterface));
+        m_mainPanel.center();
         m_tabHolder.center();
         m_tabAccountCreation.center();
         m_tabAccountConsultation.center();

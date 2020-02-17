@@ -3,6 +3,7 @@ package fr.unreal852.mineconomy.common;
 import fr.unreal852.mineconomy.common.networking.ServerPacketsHandlers;
 import fr.unreal852.mineconomy.common.proxy.IModProxy;
 import fr.unreal852.mineconomy.common.registry.*;
+import fr.unreal852.ucorefabric.common.registry.ModRegistry;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
 
@@ -14,12 +15,7 @@ public class ModEntryCommon implements ModInitializer
     public void onInitialize()
     {
         ModLogger.LogInfo("Initializing Common...");
-        ItemGroupRegistry.inititalize();
-        ItemRegistry.inititalize();
-        BlockRegistry.inititalize();
-        EntityRegistry.inititalize();
-        PacketRegistry.inititalize();
-        ContainerRegistry.initalize();
+        ModRegistry.initRegistries(ItemGroupRegistry.class, ItemRegistry.class, BlockRegistry.class, EntityRegistry.class, PacketRegistry.class, ContainerRegistry.class);
         ServerSidePacketRegistry.INSTANCE.register(PacketRegistry.ACCOUNT_CREATION, ServerPacketsHandlers::onReceiveAccountCreation);
         ServerSidePacketRegistry.INSTANCE.register(PacketRegistry.ACCOUNT_DELETION, ServerPacketsHandlers::onReceiveAccountDeletion);
         ServerSidePacketRegistry.INSTANCE.register(PacketRegistry.CHECKBOOK_VALIDATION, ServerPacketsHandlers::onReceiveCheckbookValidation);

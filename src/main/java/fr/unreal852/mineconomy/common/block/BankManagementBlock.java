@@ -1,6 +1,7 @@
 package fr.unreal852.mineconomy.common.block;
 
 import fr.unreal852.mineconomy.common.ModEntryCommon;
+import fr.unreal852.mineconomy.common.ModHelper;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityContext;
@@ -18,6 +19,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+
 import java.util.stream.Stream;
 
 public class BankManagementBlock extends Block
@@ -38,7 +40,7 @@ public class BankManagementBlock extends Block
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit)
     {
         if (world.isClient)
-            ModEntryCommon.PROXY.openBankManagementGUI();
+            ModEntryCommon.PROXY.openScreen(ModHelper.getIdentifier("gui:bank_management"));
         return super.onUse(state, world, pos, player, hand, hit);
     }
 

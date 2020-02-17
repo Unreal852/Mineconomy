@@ -12,7 +12,7 @@ public final class PacketRegistry
     public static final Identifier ACCOUNT_CREATION     = getIdentifier("pck_account_creation");
     public static final Identifier ACCOUNT_DELETION     = getIdentifier("pck_account_deletion");
 
-    public static void inititalize()
+    public static void init()
     {
         ModLogger.LogInfo("Registered Packets !");
     }

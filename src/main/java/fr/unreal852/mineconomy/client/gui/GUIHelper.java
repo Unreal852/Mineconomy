@@ -6,6 +6,8 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import spinnery.widget.*;
+import spinnery.widget.api.Position;
+import spinnery.widget.api.WPositioned;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,27 +16,17 @@ import java.util.Collection;
 @Environment(EnvType.CLIENT)
 public final class GUIHelper
 {
-    public static void setTheme(String themeName, Collection<WWidget> widgets)
+    public static void setTheme(String themeName, Collection<WAbstractWidget> widgets)
     {
         if(widgets == null || widgets.size() == 0)
             return;
-        for(WWidget widget : widgets)
+        for(WAbstractWidget widget : widgets)
             widget.setTheme(new Identifier(themeName));
     }
 
-    public static void setTheme(String themeName, WWidget... widgets)
+    public static void setTheme(String themeName, WAbstractWidget... widgets)
     {
         setTheme(themeName, Arrays.asList(widgets));
-    }
-
-    public static WPosition getPosition(int x, int y, WWidget anchor)
-    {
-        return WPosition.of(WType.ANCHORED, x, y, 0, anchor);
-    }
-
-    public static WPosition getPosition(int x, int y)
-    {
-        return WPosition.of(WType.FREE, x, y, 0);
     }
 
     public static int getStringWidth(String value)

@@ -1,7 +1,7 @@
 package fr.unreal852.mineconomy.common.item;
 
-import fr.unreal852.mineconomy.common.ModConstants;
 import fr.unreal852.mineconomy.common.ModEntryCommon;
+import fr.unreal852.mineconomy.common.ModHelper;
 import fr.unreal852.mineconomy.common.registry.ItemGroupRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -22,7 +22,7 @@ public class BankCheckbookItem extends Item
     {
         ItemStack stack = user.getStackInHand(hand);
         if (world.isClient && stack.getItem() instanceof BankCheckbookItem)
-            ModEntryCommon.PROXY.openCheckGUI(stack);
+            ModEntryCommon.PROXY.openScreen(ModHelper.getIdentifier("gui:bank_check"), stack);
         return super.use(world, user, hand);
     }
 }

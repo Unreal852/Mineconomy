@@ -16,19 +16,18 @@ public class CheckbookPrinterContainer extends BaseContainer
     {
         super(synchronizationID, linkedPlayerInventory);
 
-        BlockEntity blockEntity = getLinkedWorld().getBlockEntity(blockPos);
+        BlockEntity blockEntity = getWorld().getBlockEntity(blockPos);
         if (!(blockEntity instanceof CheckbookPrinterBlockEntity))
             return;
         CheckbookPrinterBlockEntity printerBlockEntity = (CheckbookPrinterBlockEntity) blockEntity;
-        WInterface mainInterface = new WInterface(this);
+        WInterface mainInterface = getInterface();
 
-        getHolder().add(mainInterface);
         getInventories().put(CHECKBOOK_PRINTER_INVENTORY, printerBlockEntity.getInventory());
 
         printerBlockEntity.getInventory().addListener(this::onContentChanged);
 
-        WSlot.addSingle(mainInterface, 0, CHECKBOOK_PRINTER_INVENTORY);
-        WSlot.addSingle(mainInterface, 2, CHECKBOOK_PRINTER_INVENTORY);
-        WSlot.addPlayerInventory(mainInterface, BaseContainer.PLAYER_INVENTORY);
+        mainInterface.createChild(WSlot.class).setSlotNumber(0).setInventoryNumber(CHECKBOOK_PRINTER_INVENTORY);
+        mainInterface.createChild(WSlot.class).setSlotNumber(1).setInventoryNumber(CHECKBOOK_PRINTER_INVENTORY);
+        WSlot.addHeadlessPlayerInventory(mainInterface);
     }
 }

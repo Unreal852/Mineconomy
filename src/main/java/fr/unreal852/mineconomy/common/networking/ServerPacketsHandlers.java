@@ -6,7 +6,7 @@ import fr.unreal852.mineconomy.common.bank.MinecraftBankAccount;
 import fr.unreal852.mineconomy.common.bank.MinecraftBankActionResult;
 import fr.unreal852.mineconomy.common.item.BankCheckbookItem;
 import fr.unreal852.mineconomy.common.registry.ItemRegistry;
-import fr.unreal852.ucorefabric.util.JavaUtils;
+import fr.unreal852.ucorefabric.common.util.JavaUtils;
 import net.fabricmc.fabric.api.network.PacketContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;

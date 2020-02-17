@@ -5,7 +5,7 @@ import fr.unreal852.mineconomy.common.ModLogger;
 import fr.unreal852.mineconomy.common.ModEntryCommon;
 import fr.unreal852.mineconomy.common.registry.PacketRegistry;
 import fr.unreal852.mineconomy.common.registry.ScreenRegistry;
-import fr.unreal852.ucorefabric.registry.ModRegistry;
+import fr.unreal852.ucorefabric.common.registry.ModRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -20,7 +20,7 @@ public class ModEntryClient implements ClientModInitializer
         ModLogger.LogInfo("Initializing Client Side...");
         ModEntryCommon.PROXY = new ModProxyClient();
         ClientSidePacketRegistry.INSTANCE.register(PacketRegistry.BANK_ACTION_RESULT, ClientPacketsHandlers::onReceiveBankActionResult);
-        ScreenRegistry.initialize();
+        ModRegistry.initRegistries(ScreenRegistry.class);
         ModLogger.LogInfo("Initialized Client Side !");
     }
 }

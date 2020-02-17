@@ -8,7 +8,7 @@ import fr.unreal852.mineconomy.common.item.CreditCardItem;
 import fr.unreal852.mineconomy.common.item.WalletItem;
 import net.minecraft.item.Item;
 
-import static fr.unreal852.ucorefabric.registry.ModRegistry.*;
+import static fr.unreal852.ucorefabric.common.registry.ModRegistry.*;
 import static fr.unreal852.mineconomy.common.ModHelper.getIdentifier;
 
 public final class ItemRegistry
@@ -25,7 +25,7 @@ public final class ItemRegistry
     public static final Item WALLET                     = registerItem(getIdentifier("wallet"), new WalletItem());
     public static final Item CREDIT_CARD                = registerItem(getIdentifier("credit_card"), new CreditCardItem());
 
-    public static void inititalize()
+    public static void init()
     {
         ModLogger.LogInfo("Registered Items !");
     }

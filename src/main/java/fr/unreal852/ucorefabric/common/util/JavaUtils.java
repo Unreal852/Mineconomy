@@ -1,4 +1,4 @@
-package fr.unreal852.ucorefabric.util;
+package fr.unreal852.ucorefabric.common.util;
 
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Predicate;
