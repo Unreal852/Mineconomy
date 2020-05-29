@@ -8,15 +8,15 @@ import spinnery.widget.WTabHolder;
 @Environment(EnvType.CLIENT)
 public class BankAccountConsultationTab
 {
-    private WTabHolder.WTab m_tab;
+    private WTabHolder.WTab _tab;
 
     public BankAccountConsultationTab(WTabHolder tabHolder,WTabHolder.WTab wTab)
     {
-        m_tab = wTab;
+        _tab = wTab;
 
 
 
-        GUIHelper.setTheme("spinnery:dark", m_tab.getAllWidgets());
+        GUIHelper.setTheme("spinnery:dark", _tab.getAllWidgets());
     }
 
     protected void center()

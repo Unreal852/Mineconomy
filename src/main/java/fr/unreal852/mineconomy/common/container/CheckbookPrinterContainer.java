@@ -26,8 +26,8 @@ public class CheckbookPrinterContainer extends BaseContainer
 
         printerBlockEntity.getInventory().addListener(this::onContentChanged);
 
-        mainInterface.createChild(WSlot.class).setSlotNumber(0).setInventoryNumber(CHECKBOOK_PRINTER_INVENTORY);
-        mainInterface.createChild(WSlot.class).setSlotNumber(1).setInventoryNumber(CHECKBOOK_PRINTER_INVENTORY);
+        mainInterface.createChild(WSlot::new).setSlotNumber(0).setInventoryNumber(CHECKBOOK_PRINTER_INVENTORY);
+        mainInterface.createChild(WSlot::new).setSlotNumber(1).setInventoryNumber(CHECKBOOK_PRINTER_INVENTORY);
         WSlot.addHeadlessPlayerInventory(mainInterface);
     }
 }

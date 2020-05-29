@@ -16,20 +16,20 @@ import spinnery.widget.api.Size;
 @Environment(EnvType.CLIENT)
 public class BankManagementGUI extends BaseScreen implements ICachedScreen
 {
-    private WPanel                     m_mainPanel;
-    private WTabHolder                 m_tabHolder;
-    private BankAccountCreationTab     m_tabAccountCreation;
-    private BankAccountConsultationTab m_tabAccountConsultation;
+    private WPanel                     _mainPanel;
+    private WTabHolder                 _tabHolder;
+    private BankAccountCreationTab     _tabAccountCreation;
+    private BankAccountConsultationTab _tabAccountConsultation;
 
     public BankManagementGUI()
     {
         super();
         WInterface mainInterface = getInterface();
-        m_mainPanel = mainInterface.createChild(WPanel.class, Position.of(mainInterface, 0, 0), Size.of(450, 250)).setLabel(new TranslatableText("gui.mineconomy.bank_management_title"));
-        m_tabHolder = m_mainPanel.createChild(WTabHolder.class, Position.of(m_mainPanel, 0, 0), Size.of(m_mainPanel));
+        _mainPanel = mainInterface.createChild(WPanel::new, Position.of(mainInterface, 0, 0), Size.of(450, 250)).setLabel(new TranslatableText("gui.mineconomy.bank_management_title"));
+        _tabHolder = _mainPanel.createChild(WTabHolder::new, Position.of(_mainPanel, 0, 0), Size.of(_mainPanel));
         initTabs();
-        GUIHelper.setTheme("spinnery:dark", m_mainPanel);
-        GUIHelper.setTheme("spinnery:dark", m_mainPanel.getWidgets());
+        GUIHelper.setTheme("spinnery:dark", _mainPanel);
+        GUIHelper.setTheme("spinnery:dark", _mainPanel.getWidgets());
     }
 
     @Override
@@ -41,15 +41,15 @@ public class BankManagementGUI extends BaseScreen implements ICachedScreen
 
     private void initTabs()
     {
-        m_tabAccountCreation = new BankAccountCreationTab(m_tabHolder, m_tabHolder.addTab(ItemRegistry.MONEY_BANKNOTE_TEN, new TranslatableText("gui.mineconomy.bank_management_account_creation_name")));
-        m_tabAccountConsultation = new BankAccountConsultationTab(m_tabHolder, m_tabHolder.addTab(ItemRegistry.MONEY_BANKNOTE_TEN, new TranslatableText("gui.mineconomy.bank_management_account_consultation_name")));
+        _tabAccountCreation = new BankAccountCreationTab(_tabHolder, _tabHolder.addTab(ItemRegistry.MONEY_BANKNOTE_TEN, new TranslatableText("gui.mineconomy.bank_management_account_creation_name")));
+        _tabAccountConsultation = new BankAccountConsultationTab(_tabHolder, _tabHolder.addTab(ItemRegistry.MONEY_BANKNOTE_TEN, new TranslatableText("gui.mineconomy.bank_management_account_consultation_name")));
     }
 
     private void center()
     {
-        m_mainPanel.center();
-        m_tabHolder.center();
-        m_tabAccountCreation.center();
-        m_tabAccountConsultation.center();
+        _mainPanel.center();
+        _tabHolder.center();
+        _tabAccountCreation.center();
+        _tabAccountConsultation.center();
     }
 }

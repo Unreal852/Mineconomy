@@ -21,30 +21,30 @@ import spinnery.widget.api.Size;
 @Environment(EnvType.CLIENT)
 public class BankCheckGUI extends BaseScreen implements ICachedScreen
 {
-    private WPanel      m_mainPanel;
-    private WStaticText m_fromText;
-    private WStaticText m_toText;
-    private WStaticText m_amountText;
-    private WTextField  m_fromField;
-    private WTextField  m_toField;
-    private WTextField  m_amountField;
-    private WButton     m_validateButton;
+    private final WPanel      _mainPanel;
+    private final WStaticText _fromText;
+    private final WStaticText _toText;
+    private final WStaticText _amountText;
+    private final WTextField  _fromField;
+    private final WTextField  _toField;
+    private final WTextField  _amountField;
+    private final WButton     _validateButton;
 
     public BankCheckGUI()
     {
         super();
 
         WInterface mainInterface = getInterface();
-        m_mainPanel = mainInterface.createChild(WPanel.class).setSize(Size.of(250, 100));
-        m_fromText = m_mainPanel.createChild(WStaticText.class).setText(new TranslatableText("gui.mineconomy.bank_check_from"));
-        m_toText = m_mainPanel.createChild(WStaticText.class).setText(new TranslatableText("gui.mineconomy.bank_check_to"));
-        m_amountText = m_mainPanel.createChild(WStaticText.class).setText(new TranslatableText("gui.mineconomy.bank_check_amount"));
-        m_fromField = m_mainPanel.createChild(WTextField.class).setEditable(false);
-        m_toField = m_mainPanel.createChild(WTextField.class);
-        m_amountField = m_mainPanel.createChild(WTextField.class);
-        m_validateButton = m_mainPanel.createChild(WButton.class).setOnMouseClicked((wButton, x, y, z) -> onValidateClicked()).setLabel(new TranslatableText("gui.mineconomy.bank_check_validate"));
-        GUIHelper.setTheme("spinnery:dark", m_mainPanel);
-        GUIHelper.setTheme("spinnery:dark", m_mainPanel.getWidgets());
+        _mainPanel = mainInterface.createChild(WPanel::new).setSize(Size.of(250, 100));
+        _fromText = _mainPanel.createChild(WStaticText::new).setText(new TranslatableText("gui.mineconomy.bank_check_from"));
+        _toText = _mainPanel.createChild(WStaticText::new).setText(new TranslatableText("gui.mineconomy.bank_check_to"));
+        _amountText = _mainPanel.createChild(WStaticText::new).setText(new TranslatableText("gui.mineconomy.bank_check_amount"));
+        _fromField = _mainPanel.createChild(WTextField::new).setEditable(false);
+        _toField = _mainPanel.createChild(WTextField::new);
+        _amountField = _mainPanel.createChild(WTextField::new);
+        _validateButton = _mainPanel.createChild(WButton::new).setOnMouseClicked((wButton, x, y, z) -> onValidateClicked()).setLabel(new TranslatableText("gui.mineconomy.bank_check_validate"));
+        GUIHelper.setTheme("spinnery:dark", _mainPanel);
+        GUIHelper.setTheme("spinnery:dark", _mainPanel.getWidgets());
     }
 
     @Override
@@ -55,11 +55,11 @@ public class BankCheckGUI extends BaseScreen implements ICachedScreen
         ItemStack itemStack = (ItemStack) params[0];
         if (itemStack.getItem() instanceof BankCheckbookItem)
         {
-            m_mainPanel.setLabel(new TranslatableText("gui.mineconomy.bank_check_title", ""));
+            _mainPanel.setLabel(new TranslatableText("gui.mineconomy.bank_check_title", ""));
         }
         else if (itemStack.getItem() instanceof BankCheckItem)
         {
-            m_mainPanel.setLabel(new TranslatableText("gui.mineconomy.bank_check_title", ""));
+            _mainPanel.setLabel(new TranslatableText("gui.mineconomy.bank_check_title", ""));
         }
         else
             return;
@@ -69,19 +69,18 @@ public class BankCheckGUI extends BaseScreen implements ICachedScreen
 
     private void onValidateClicked()
     {
-        if (!m_validateButton.isFocused() || MinecraftClient.getInstance().player == null)
+        if (!_validateButton.isFocused() || MinecraftClient.getInstance().player == null)
             return;
         try
         {
-            int toID = Integer.parseInt(m_toField.getText());
-            double amount = Double.parseDouble(m_amountField.getText());
+            int toID = Integer.parseInt(_toField.getText());
+            double amount = Double.parseDouble(_amountField.getText());
             PacketByteBuf byteBuf = new PacketByteBuf(Unpooled.buffer());
             byteBuf.writeInt(toID);
             byteBuf.writeDouble(amount);
             ClientUtils.closeScreen();
             ClientSidePacketRegistry.INSTANCE.sendToServer(PacketRegistry.CHECKBOOK_VALIDATION, byteBuf);
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -89,26 +88,26 @@ public class BankCheckGUI extends BaseScreen implements ICachedScreen
 
     private void center()
     {
-        m_mainPanel.center();
+        _mainPanel.center();
 
         int widgetMarginX = 10;
-        int largestStringWidth = GUIHelper.getLargestString(m_fromText.getText().asString(), m_toText.getText().asString(), m_amountText.getText().asString());
-        int textFieldsWidth = m_mainPanel.getWidth() - (largestStringWidth + 25);
-        int validateWidth = GUIHelper.getStringWidth(m_validateButton.getLabel().asString());
+        int largestStringWidth = GUIHelper.getLargestString(_fromText.getText().asString(), _toText.getText().asString(), _amountText.getText().asString());
+        int textFieldsWidth = _mainPanel.getWidth() - (largestStringWidth + 25);
+        int validateWidth = GUIHelper.getStringWidth(_validateButton.getLabel().asString());
 
-        m_fromText.setPosition(Position.of(m_mainPanel, widgetMarginX, 24));
-        m_fromField.setPosition(Position.of(m_fromText, largestStringWidth + widgetMarginX, -4));
-        m_fromField.setSize(Size.of(textFieldsWidth, 15));
+        _fromText.setPosition(Position.of(_mainPanel, widgetMarginX, 24));
+        _fromField.setPosition(Position.of(_fromText, largestStringWidth + widgetMarginX, -4));
+        _fromField.setSize(Size.of(textFieldsWidth, 15));
 
-        m_toText.setPosition(Position.of(m_fromText, 0, 17));
-        m_toField.setPosition(Position.of(m_toText, largestStringWidth + widgetMarginX, -4));
-        m_toField.setSize(Size.of(m_fromField));
+        _toText.setPosition(Position.of(_fromText, 0, 17));
+        _toField.setPosition(Position.of(_toText, largestStringWidth + widgetMarginX, -4));
+        _toField.setSize(Size.of(_fromField));
 
-        m_amountText.setPosition(Position.of(m_toText, 0, 17));
-        m_amountField.setPosition(Position.of(m_amountText, largestStringWidth + widgetMarginX, -4));
-        m_amountField.setSize(Size.of(m_fromField));
+        _amountText.setPosition(Position.of(_toText, 0, 17));
+        _amountField.setPosition(Position.of(_amountText, largestStringWidth + widgetMarginX, -4));
+        _amountField.setSize(Size.of(_fromField));
 
-        m_validateButton.setPosition(Position.of(m_mainPanel, m_mainPanel.getWidth() - (validateWidth + 15), m_mainPanel.getHeight() - 25));
-        m_validateButton.setSize(Size.of(validateWidth + 10, 15));
+        _validateButton.setPosition(Position.of(_mainPanel, _mainPanel.getWidth() - (validateWidth + 15), _mainPanel.getHeight() - 25));
+        _validateButton.setSize(Size.of(validateWidth + 10, 15));
     }
 }

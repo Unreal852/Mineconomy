@@ -18,9 +18,9 @@ public final class GUIHelper
 {
     public static void setTheme(String themeName, Collection<WAbstractWidget> widgets)
     {
-        if(widgets == null || widgets.size() == 0)
+        if (widgets == null || widgets.size() == 0)
             return;
-        for(WAbstractWidget widget : widgets)
+        for (WAbstractWidget widget : widgets)
             widget.setTheme(new Identifier(themeName));
     }
 
